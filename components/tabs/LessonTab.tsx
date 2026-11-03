@@ -48,7 +48,7 @@ export default function LessonTab({ user }: { user: User }) {
     let idx = 0
 
     function playCard() {
-      if (!playRef.current || idx >= deck.items.length) {
+if (!playRef.current || idx >= deck.items.length) {
         setPlaying(false)
         if (idx >= deck.items.length) setDone(true)
         return
