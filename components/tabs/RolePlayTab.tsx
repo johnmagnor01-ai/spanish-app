@@ -74,9 +74,9 @@ export default function RolePlayTab({ user }: { user: User }) {
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-const mr = new MediaRecorder(stream)
+      const mr = new MediaRecorder(stream, { timeslice: undefined })
       chunksRef.current = []
-      mr.ondataavailable = e => chunksRef.current.push(e.data)
+      mr.ondataavailable = e => { if (e.data.size > 0) chunksRef.current.push(e.data) }
       mr.onstop = async () => {
         stream.getTracks().forEach(t => t.stop())
         const blob = new Blob(chunksRef.current, { type: 'audio/webm' })
@@ -169,10 +169,11 @@ const mr = new MediaRecorder(stream)
         <div style={{ display:'flex', gap:8 }}>
           <button onClick={toggleMic} style={{
             width:48, height:48, borderRadius:12, border:'none', flexShrink:0, cursor:'pointer',
-            background: micActive ? '#e53e3e' : 'var(--bg3)',
-            fontSize:'1.2rem', display:'flex', alignItems:'center', justifyContent:'center'
+            background: micActive ? '#22c55e' : 'var(--bg3)',
+            fontSize:'1.2rem', display:'flex', alignItems:'center', justifyContent:'center',
+            transition: 'background 0.2s'
           }}>
-            {micActive ? '⏹' : '🎤'}
+            {micActive ? '✅' : '🎤'}
           </button>
           <input
             value={input} onChange={e => setInput(e.target.value)}
@@ -189,8 +190,8 @@ const mr = new MediaRecorder(stream)
           }}>→</button>
         </div>
         {micActive && (
-          <p style={{ color:'#e53e3e', fontSize:'0.8rem', textAlign:'center', marginTop:8 }}>
-            🔴 Recording… tap stop when done
+          <p style={{ color:'#22c55e', fontSize:'0.8rem', textAlign:'center', marginTop:8 }}>
+            🟢 Recording… tap ✅ when done speaking
           </p>
         )}
       </div>
