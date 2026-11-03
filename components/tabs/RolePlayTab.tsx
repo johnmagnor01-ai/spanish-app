@@ -74,7 +74,7 @@ export default function RolePlayTab({ user }: { user: User }) {
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-      const mr = new MediaRecorder(stream)
+const mr = new MediaRecorder(stream)
       chunksRef.current = []
       mr.ondataavailable = e => chunksRef.current.push(e.data)
       mr.onstop = async () => {
