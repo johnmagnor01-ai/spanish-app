@@ -1,14 +1,16 @@
 'use client'
 import { useState, useRef } from 'react'
 import type { User } from '@supabase/supabase-js'
-import { SCENARIOS, ERROR_PATTERNS } from '@/lib/data'
-import { createClient } from '@/lib/supabase'
+import { SCENARIOS } from '@/lib/data'
 
-function speak(text: string, lang: string, onDone?: () => void) {
+interface Message { role: 'user' | 'assistant'; content: string }
+interface ChatMessage { from: 'migo' | 'you'; es: string; en?: string }
+
+function speak(text: string, onDone?: () => void) {
   if (typeof window === 'undefined') return
   window.speechSynthesis.cancel()
   const u = new SpeechSynthesisUtterance(text)
-  u.lang = lang
+  u.lang = 'es-MX'
   u.rate = 0.88
   if (onDone) u.onend = onDone
   window.speechSynthesis.speak(u)
@@ -16,89 +18,91 @@ function speak(text: string, lang: string, onDone?: () => void) {
 
 export default function RolePlayTab({ user }: { user: User }) {
   const [scenarioKey, setScenarioKey] = useState<string | null>(null)
-  const [messages, setMessages] = useState<{ from: 'migo' | 'you'; es: string; en?: string }[]>([])
-  const [replyIdx, setReplyIdx] = useState(0)
+  const [messages, setMessages] = useState<ChatMessage[]>([])
+  const [history, setHistory] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [micActive, setMicActive] = useState(false)
-  const [correction, setCorrection] = useState<string | null>(null)
-  const recognitionRef = useRef<any>(null)
-  const supabase = createClient()
+  const [loading, setLoading] = useState(false)
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null)
+  const chunksRef = useRef<Blob[]>([])
 
   function startScenario(key: string) {
     setScenarioKey(key)
-    setReplyIdx(0)
-    setCorrection(null)
     const opener = SCENARIOS[key].opener
     setMessages([{ from: 'migo', es: opener.es, en: opener.en }])
-    speak(opener.es, 'es-MX')
+    setHistory([{ role: 'assistant', content: opener.es }])
+    speak(opener.es)
   }
 
-  function checkErrors(text: string): string | null {
-    for (const ep of ERROR_PATTERNS) {
-      if (ep.re.test(text)) return ep.say
-    }
-    return null
-  }
-
-  function sendMessage() {
-    if (!input.trim() || !scenarioKey) return
-    const userText = input.trim()
+  async function sendMessage(text: string) {
+    if (!text.trim() || !scenarioKey || loading) return
     setInput('')
+    setLoading(true)
 
-    // Add user message
-    setMessages(m => [...m, { from: 'you', es: userText }])
+    const userMsg: ChatMessage = { from: 'you', es: text.trim() }
+    setMessages(m => [...m, userMsg])
 
-    // Check for errors
-    const err = checkErrors(userText)
-    if (err) {
-      setCorrection(err)
-      speak(err, 'es-MX', () => sendMigoReply())
-    } else {
-      setCorrection(null)
-      sendMigoReply()
+    const newHistory: Message[] = [...history, { role: 'user', content: text.trim() }]
+    setHistory(newHistory)
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: newHistory,
+          scenario: SCENARIOS[scenarioKey].title + ' — ' + SCENARIOS[scenarioKey].opener.en
+        })
+      })
+      const data = await res.json()
+      const migoMsg: ChatMessage = { from: 'migo', es: data.es, en: data.en }
+      setMessages(m => [...m, migoMsg])
+      setHistory(h => [...h, { role: 'assistant', content: data.es }])
+      speak(data.es)
+    } catch {
+      setMessages(m => [...m, { from: 'migo', es: 'Lo siento, hubo un error.', en: 'Sorry, there was an error.' }])
     }
+    setLoading(false)
   }
 
-  function sendMigoReply() {
-    const scenario = SCENARIOS[scenarioKey!]
-    const replies = scenario.replies
-    if (replyIdx >= replies.length) {
-      const done = { from: 'migo' as const, es: '¡Muy bien! Eso fue excelente. 👏', en: 'Very good! That was excellent.' }
-      setMessages(m => [...m, done])
-      speak(done.es, 'es-MX')
-      return
-    }
-    const reply = replies[replyIdx]
-    setReplyIdx(i => i + 1)
-    setMessages(m => [...m, { from: 'migo', es: reply.es, en: reply.en }])
-    speak(reply.es, 'es-MX')
-  }
-
-  function toggleMic() {
+  async function toggleMic() {
     if (micActive) {
-      recognitionRef.current?.stop()
+      mediaRecorderRef.current?.stop()
       setMicActive(false)
       return
     }
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
-    if (!SR) {
-      alert('Speech recognition not available. Use Chrome or type your response.')
-      return
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      const mr = new MediaRecorder(stream)
+      chunksRef.current = []
+      mr.ondataavailable = e => chunksRef.current.push(e.data)
+      mr.onstop = async () => {
+        stream.getTracks().forEach(t => t.stop())
+        const blob = new Blob(chunksRef.current, { type: 'audio/webm' })
+        const formData = new FormData()
+        formData.append('file', blob, 'audio.webm')
+        formData.append('model', 'whisper-1')
+        formData.append('language', 'es')
+
+        try {
+          const res = await fetch('https://api.openai.com/v1/audio/transcriptions', {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${process.env.NEXT_PUBLIC_OPENAI_KEY}` },
+            body: formData
+          })
+          const data = await res.json()
+          if (data.text) sendMessage(data.text)
+        } catch {
+          alert('Transcription failed. Try typing instead.')
+        }
+      }
+      mr.start()
+      mediaRecorderRef.current = mr
+      setMicActive(true)
+    } catch {
+      alert('Microphone access denied.')
     }
-    window.speechSynthesis.cancel()
-    const rec = new SR()
-    rec.lang = 'es-MX'
-    rec.interimResults = false
-    rec.maxAlternatives = 1
-    rec.onresult = (e: any) => {
-      setInput(e.results[0][0].transcript)
-      setMicActive(false)
-    }
-    rec.onerror = () => setMicActive(false)
-    rec.onend = () => setMicActive(false)
-    rec.start()
-    recognitionRef.current = rec
-    setMicActive(true)
   }
 
   if (!scenarioKey) {
@@ -106,7 +110,7 @@ export default function RolePlayTab({ user }: { user: User }) {
       <div style={{ padding:'24px 20px', maxWidth:480, margin:'0 auto' }}>
         <h2 style={{ fontSize:'1.2rem', fontWeight:700, marginBottom:6 }}>Choose a Scenario</h2>
         <p style={{ color:'var(--fg2)', fontSize:'0.85rem', marginBottom:20 }}>
-          Migo plays the other person. Errors get corrected out loud in Spanish.
+          Migo plays the other person and responds intelligently in Spanish.
         </p>
         <div style={{ display:'flex', flexDirection:'column', gap:10 }}>
           {Object.entries(SCENARIOS).map(([key, s]) => (
@@ -125,7 +129,6 @@ export default function RolePlayTab({ user }: { user: User }) {
 
   return (
     <div style={{ display:'flex', flexDirection:'column', height:'calc(100vh - 120px)' }}>
-      {/* Header */}
       <div style={{
         padding:'12px 20px', borderBottom:'1px solid var(--border)',
         display:'flex', alignItems:'center', gap:10, flexShrink:0
@@ -136,7 +139,6 @@ export default function RolePlayTab({ user }: { user: User }) {
         <span style={{ fontWeight:700 }}>{SCENARIOS[scenarioKey].title}</span>
       </div>
 
-      {/* Messages */}
       <div style={{ flex:1, overflow:'auto', padding:'16px 20px', display:'flex', flexDirection:'column', gap:12 }}>
         {messages.map((m, i) => (
           <div key={i} style={{ display:'flex', flexDirection:'column', alignItems: m.from === 'migo' ? 'flex-start' : 'flex-end' }}>
@@ -148,19 +150,17 @@ export default function RolePlayTab({ user }: { user: User }) {
               <div style={{ color:'var(--fg)', fontWeight:600 }}>{m.es}</div>
               {m.en && <div style={{ color: m.from === 'migo' ? 'var(--fg2)' : 'rgba(255,255,255,0.7)', fontSize:'0.82rem', marginTop:4 }}>{m.en}</div>}
             </div>
-            {correction && i === messages.length - 1 && m.from === 'you' && (
-              <div style={{
-                maxWidth:'80%', background:'var(--red)', borderRadius:'16px 4px 16px 16px',
-                padding:'10px 14px', marginTop:6, fontSize:'0.85rem'
-              }}>
-                ⚠️ {correction}
-              </div>
-            )}
           </div>
         ))}
+        {loading && (
+          <div style={{ display:'flex', alignItems:'flex-start' }}>
+            <div style={{ background:'var(--bg2)', borderRadius:'4px 16px 16px 16px', padding:'12px 14px', color:'var(--fg2)' }}>
+              Migo está pensando…
+            </div>
+          </div>
+        )}
       </div>
 
-      {/* Input */}
       <div style={{
         padding:'12px 16px', borderTop:'1px solid var(--border)',
         background:'var(--bg2)', flexShrink:0,
@@ -169,30 +169,28 @@ export default function RolePlayTab({ user }: { user: User }) {
         <div style={{ display:'flex', gap:8 }}>
           <button onClick={toggleMic} style={{
             width:48, height:48, borderRadius:12, border:'none', flexShrink:0, cursor:'pointer',
-            background: micActive ? 'var(--red)' : 'var(--bg3)',
+            background: micActive ? '#e53e3e' : 'var(--bg3)',
             fontSize:'1.2rem', display:'flex', alignItems:'center', justifyContent:'center'
           }}>
             {micActive ? '⏹' : '🎤'}
           </button>
           <input
             value={input} onChange={e => setInput(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && sendMessage()}
+            onKeyDown={e => e.key === 'Enter' && sendMessage(input)}
             placeholder="Respond in Spanish…"
             style={{
               flex:1, background:'var(--bg3)', border:'1px solid var(--border)',
               borderRadius:12, padding:'12px 14px', color:'var(--fg)', fontSize:'0.95rem', outline:'none'
             }}
           />
-          <button onClick={sendMessage} style={{
+          <button onClick={() => sendMessage(input)} style={{
             width:48, height:48, borderRadius:12, border:'none', flexShrink:0,
             background:'var(--accent)', color:'#fff', fontSize:'1.2rem', cursor:'pointer'
-          }}>
-            →
-          </button>
+          }}>→</button>
         </div>
         {micActive && (
-          <p style={{ color:'var(--red)', fontSize:'0.8rem', textAlign:'center', marginTop:8 }}>
-            🔴 Listening… speak in Spanish
+          <p style={{ color:'#e53e3e', fontSize:'0.8rem', textAlign:'center', marginTop:8 }}>
+            🔴 Recording… tap stop when done
           </p>
         )}
       </div>
