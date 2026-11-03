@@ -120,7 +120,6 @@ export default function RolePlayTab({ user }: { user: User }) {
     formData.append('language', 'es')
 
     try {
-      // Route through our server so we don't need NEXT_PUBLIC_OPENAI_KEY in the browser
       formData.append('ext', ext)
       const res = await fetch('/api/transcribe', {
         method: 'POST',
@@ -129,13 +128,17 @@ export default function RolePlayTab({ user }: { user: User }) {
       const data = await res.json()
       setTranscribing(false)
       if (data.text && data.text.trim()) {
-        sendMessage(data.text.trim())
+        // Put transcript in input box first so user can see/edit it, then auto-send
+        setInput(data.text.trim())
+        setTimeout(() => sendMessage(data.text.trim()), 100)
+      } else if (data.error) {
+        alert(`Error: ${data.error}${data.detail ? '\n' + data.detail : ''}`)
       } else {
-        alert('Could not understand audio. Try speaking more clearly or type your response.')
+        alert('No speech detected. Make sure your mic is working and speak clearly.')
       }
-    } catch {
+    } catch (e) {
       setTranscribing(false)
-      alert('Transcription failed. Check your connection and try again.')
+      alert('Transcription failed: ' + String(e))
     }
   }
 
