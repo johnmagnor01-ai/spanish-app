@@ -28,11 +28,11 @@ export default function ProgressTab({ user }: { user: User }) {
   }, [])
 
   const totalCards = sessions.reduce((s, r) => s + (r.cards_done ?? 0), 0)
-  const uniqueDays = new Set(sessions.map(s => s.date)).size
+ const uniqueDays = Array.from(new Set(sessions.map(s => s.date))).length
 
   // Streak calc
   function calcStreak() {
-    const dates = [...new Set(sessions.map(s => s.date))].sort().reverse()
+   const dates = Array.from(new Set(sessions.map(s => s.date))).sort().reverse()
     if (!dates.length) return 0
     let streak = 0
     let cur = new Date()
