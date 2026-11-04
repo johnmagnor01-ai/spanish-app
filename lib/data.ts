@@ -82,6 +82,136 @@ export const DECKS: Record<string, Deck> = {
       { es: 'la empresa', en: 'company / firm', tip: 'Think "enterprise." La empresa = the company. Also: el negocio, la compañía.' },
       { es: 'cobrar', en: 'to charge / to collect payment', tip: 'Cobrar = to charge someone. Me cobró cien pesos = he charged me 100 pesos.' },
     ]
+  },
+  ser_vs_estar: {
+    label: 'Ser vs Estar',
+    color: '#ec4899',
+    items: [
+      { es: 'Soy de México. / Estoy en México.', en: 'I am from Mexico. / I am in Mexico.', tip: 'Ser = origin (permanent). Estar = location (temporary). Where you\'re FROM vs where you ARE right now.' },
+      { es: 'El café está frío.', en: 'The coffee is cold.', tip: 'Estar for temporary states. The coffee isn\'t always cold — it changed. Use estar for conditions that can change.' },
+      { es: 'Mi abuela es muy seria.', en: 'My grandmother is very serious.', tip: 'Ser for personality traits. It\'s part of who she is, not a temporary mood.' },
+      { es: 'Estoy cansado hoy.', en: 'I am tired today.', tip: 'Estar for how you feel right now. "Hoy" is the clue — temporary. Soy cansado would mean you\'re a tired person by nature.' },
+      { es: 'La boda es en Cancún.', en: 'The wedding is in Cancún.', tip: 'Ser for events — where/when an event takes place. Even though it\'s location, events use ser.' },
+      { es: 'Ese chico está muy guapo hoy.', en: 'That guy looks really good today.', tip: 'Estar with looks = how someone looks right now. Ser guapo = handsome by nature. Estar guapo = looking good today.' },
+      { es: 'La sopa está lista.', en: 'The soup is ready.', tip: 'Estar for results of change — the soup went from not ready to ready. Listo with estar = ready. Listo with ser = clever/smart.' },
+      { es: 'Somos amigos desde la infancia.', en: 'We\'ve been friends since childhood.', tip: 'Ser for relationships. Relationships are defining characteristics, not temporary states.' },
+      { es: '¿Cómo estás? — Estoy bien, gracias.', en: 'How are you? — I\'m fine, thanks.', tip: 'Estar for greetings and how you feel. ¿Cómo eres? asks what kind of person you are (personality). ¿Cómo estás? asks how you\'re doing.' },
+      { es: 'Está muerto. / Es un muerto.', en: 'He is dead (now). / He is a dead man (story character).', tip: 'Even death: estar muerto = the state of being dead. Ser un muerto = used for fictional characters or figures of speech.' },
+    ]
+  },
+  por_vs_para: {
+    label: 'Por vs Para',
+    color: '#06b6d4',
+    items: [
+      { es: 'Este regalo es para ti.', en: 'This gift is for you.', tip: 'Para = recipient/destination. The gift is GOING TO you. Think "para = for the purpose of reaching someone."' },
+      { es: 'Gracias por el regalo.', en: 'Thank you for the gift.', tip: 'Por = reason/cause. You\'re thanking them BECAUSE OF the gift. Por points backward to a cause.' },
+      { es: 'Salgo para Guadalajara mañana.', en: 'I leave for Guadalajara tomorrow.', tip: 'Para = destination. You\'re heading TOWARD Guadalajara. Movement toward a destination = para.' },
+      { es: 'Pasé por Guadalajara en mi viaje.', en: 'I passed through Guadalajara on my trip.', tip: 'Por = movement through/along a place. You moved THROUGH it, not toward it as a destination.' },
+      { es: 'Necesito terminar esto para el viernes.', en: 'I need to finish this by Friday.', tip: 'Para = deadline. The work is heading TOWARD Friday as its endpoint.' },
+      { es: 'Estudié por tres horas.', en: 'I studied for three hours.', tip: 'Por = duration of time. How LONG something lasted. Three hours is a span, not a deadline.' },
+      { es: 'Te llamo para hablar del proyecto.', en: 'I\'m calling you to talk about the project.', tip: 'Para + infinitive = purpose/goal. You\'re calling IN ORDER TO talk. Para expresses goals.' },
+      { es: 'Me pagaron cien dólares por el trabajo.', en: 'They paid me a hundred dollars for the work.', tip: 'Por = exchange. You got paid IN EXCHANGE FOR the work. Any trade or swap = por.' },
+      { es: 'Para ser principiante, hablas muy bien.', en: 'For a beginner, you speak really well.', tip: 'Para = considering / given that. "Given that you\'re a beginner" — sets a standard for comparison.' },
+      { es: 'Hablan por teléfono cada noche.', en: 'They talk on the phone every night.', tip: 'Por = means of communication/transportation. Through the phone. Por teléfono, por correo, por avión.' },
+    ]
+  },
+  subjunctive_intro: {
+    label: 'Subjunctive Basics',
+    color: '#8b5cf6',
+    items: [
+      { es: 'Quiero que vengas a la fiesta.', en: 'I want you to come to the party.', tip: 'Querer que + subjunctive. Two different subjects = subjunctive. "I want" (yo) → "you come" (tú). The trigger is querer que.' },
+      { es: 'Espero que todo salga bien.', en: 'I hope everything goes well.', tip: 'Esperar que + subjunctive. Hope/wish triggers it. "Salga" is the subjunctive of salir.' },
+      { es: 'Es importante que llegues a tiempo.', en: 'It\'s important that you arrive on time.', tip: 'Es + adjective + que = subjunctive. Es importante/necesario/bueno/malo que → all trigger subjunctive.' },
+      { es: 'No creo que tenga razón.', en: 'I don\'t think he\'s right.', tip: 'Negative belief = subjunctive. "No creo que" triggers it. Creo que (affirmative) = indicative. No creo que = subjunctive.' },
+      { es: 'Busco un apartamento que tenga piscina.', en: 'I\'m looking for an apartment that has a pool.', tip: 'Unknown/hypothetical thing = subjunctive. The apartment doesn\'t exist yet in your mind — it\'s a wish, not a specific one.' },
+      { es: 'Cuando llegues, llámame.', en: 'When you arrive, call me.', tip: 'Cuando + future event = subjunctive. The arrival hasn\'t happened yet. Cuando + past/habitual = indicative.' },
+      { es: 'Ojalá que no llueva mañana.', en: 'Hopefully it won\'t rain tomorrow.', tip: 'Ojalá ALWAYS takes subjunctive. It comes from Arabic "inshallah." Ojalá que + subjunctive, always.' },
+      { es: 'Me alegra que estés aquí.', en: 'I\'m glad you\'re here.', tip: 'Emotions + que = subjunctive. Me alegra, me sorprende, me molesta, me encanta que → all trigger subjunctive.' },
+    ]
+  },
+  mexico_slang: {
+    label: '🇲🇽 Mexican Slang',
+    color: '#10b981',
+    items: [
+      { es: '¡Qué padre!', en: 'How cool! / Awesome!', tip: 'Padre literally means "father" but in Mexico it means cool/great. ¡Qué padre! = How cool! Está muy padre = It\'s really cool.' },
+      { es: 'No manches.', en: 'No way. / Are you serious? / Come on.', tip: 'Polite version of a stronger expression. Used for surprise, frustration, or disbelief. Very common, totally safe to say.' },
+      { es: 'Órale.', en: 'Okay / Let\'s go / Right on / Wow', tip: 'The most versatile Mexican word. Agreement: "Órale" = okay, deal. Encouragement: "¡Órale!" = let\'s go! Surprise: "Órale..." = wow.' },
+      { es: '¿Qué onda?', en: 'What\'s up? / What\'s going on?', tip: 'Onda = wave/vibe. ¿Qué onda? = what\'s the vibe? Very casual greeting. ¿Qué onda contigo? = what\'s up with you?' },
+      { es: 'Está chido/chida.', en: 'It\'s cool / It\'s nice.', tip: 'Chido (masc) / chida (fem). Very common in Mexico City. ¡Está muy chido! = It\'s really cool! Similar to padre.' },
+      { es: 'Me cae bien / Me cae mal.', en: 'I like him/her / I don\'t like him/her (as a person).', tip: 'Caer bien/mal = to make a good/bad impression on someone. Me cae bien = I like them (personality). NOT for objects — that\'s me gusta.' },
+      { es: 'Ahorita.', en: 'In a moment / Right now / Later (vague)', tip: 'THE most confusing Mexican word. Ahorita can mean right this second, in a few minutes, or in a few hours. Context is everything. "Ahorita voy" = I\'m coming (eventually).' },
+      { es: 'No hay bronca.', en: 'No problem. / No worries.', tip: 'Bronca = problem/fight. No hay bronca = no problem. Similar to no hay problema but more casual and very Mexican.' },
+      { es: 'Cuate / Güey (wey)', en: 'Buddy / Dude / Bro', tip: 'Cuate = buddy/twin (Aztec origin). Güey/wey = dude/bro (super common, can be rude with wrong tone). Between friends it\'s fine.' },
+      { es: '¡Ándale!', en: 'Come on! / Hurry up! / That\'s it! / Exactly!', tip: 'Multi-purpose like órale. ¡Ándale, apúrate! = come on, hurry up! ¡Ándale! alone = exactly / that\'s right.' },
+    ]
+  },
+  common_mistakes: {
+    label: '⚠️ Common Mistakes',
+    color: '#ef4444',
+    items: [
+      { es: 'Me di cuenta DE que estaba equivocado.', en: 'I realized I was wrong.', tip: 'NEVER drop the DE. "Darse cuenta de que" always needs the DE. "Me di cuenta que" is one of the most common errors.' },
+      { es: 'Había mucha gente en la fiesta.', en: 'There were a lot of people at the party.', tip: 'Past "there was/were" = había, NEVER "hubieron" (common error) or "estaba." Había is always singular even with plural nouns.' },
+      { es: 'Al principio no entendía nada.', en: 'At first I didn\'t understand anything.', tip: '"At first" = al principio. NOT "el primero" or "en el primer." Al principio is a fixed phrase.' },
+      { es: 'Tuve que estudiar mucho ayer.', en: 'I had to study a lot yesterday.', tip: 'Tuve que = had to and DID it. Tenía que = was supposed to (may or may not have done it). The difference matters.' },
+      { es: 'La semana pasada fui al gimnasio.', en: 'Last week I went to the gym.', tip: '"Last week" = la semana pasada. No "en" before it. Never "en la semana pasada." Same for: el año pasado, el mes pasado.' },
+      { es: 'Llevo tres años viviendo aquí.', en: 'I\'ve been living here for three years.', tip: 'Llevar + time + gerund = how long you\'ve been doing something. Much more natural than "he vivido aquí por tres años."' },
+      { es: 'Se me olvidó llamarte.', en: 'I forgot to call you.', tip: 'Olvidarse = reflexive. The standard form is "se me olvidó" — literally "it forgot itself to me." Never just "olvidé llamarte."' },
+      { es: 'ÉL trabaja mucho. / EL trabajo es difícil.', en: 'HE works a lot. / THE work is hard.', tip: 'Él (with accent) = he. El (no accent) = the. The accent mark is the entire difference between a pronoun and an article.' },
+    ]
+  },
+  feelings_emotions: {
+    label: 'Feelings & Emotions',
+    color: '#f43f5e',
+    items: [
+      { es: 'Estoy harto/a de esto.', en: 'I\'m fed up with this.', tip: 'Harto = fed up / sick of. Estoy harto de trabajar tanto = I\'m sick of working so much. Strong but common.' },
+      { es: 'Me da vergüenza.', en: 'It embarrasses me. / I\'m embarrassed.', tip: 'Vergüenza = shame/embarrassment. "Me da vergüenza" = it gives me embarrassment. NOT "estoy embarazada" — that means pregnant!' },
+      { es: 'Tengo ganas de salir.', en: 'I feel like going out. / I want to go out.', tip: 'Tener ganas de + infinitive = to feel like doing something. Very natural. Tengo muchas ganas = I really want to.' },
+      { es: 'Me cae gordo ese tipo.', en: 'I can\'t stand that guy.', tip: 'Caer gordo = to rub someone the wrong way. Me cae gordo = I can\'t stand him. Stronger than me cae mal.' },
+      { es: 'Estoy de buen/mal humor.', en: 'I\'m in a good/bad mood.', tip: 'De buen humor / de mal humor. Humor in Spanish = mood, not humor/funny. "Está de muy buen humor hoy" = he\'s in a great mood today.' },
+      { es: 'Me importa un comino.', en: 'I couldn\'t care less.', tip: 'Importar = to matter. Me importa = it matters to me. Me importa un comino (a cumin seed) = it matters to me as much as a cumin seed = not at all.' },
+      { es: 'Se me parte el corazón.', en: 'It breaks my heart.', tip: 'Partirse el corazón = to break your heart. Se me parte = it breaks on me. Very natural emotional expression.' },
+      { es: 'Estoy hasta la madre.', en: 'I\'m completely fed up / over it.', tip: 'Mexican expression meaning totally done/fed up. Strong but very common. Use with people you know well.' },
+    ]
+  },
+  verbs_daily: {
+    label: 'Essential Daily Verbs',
+    color: '#0ea5e9',
+    items: [
+      { es: 'Hay que aprovechar el tiempo.', en: 'You have to make the most of the time.', tip: 'Aprovechar = to take advantage of / make the most of. Aprovechar una oportunidad = seize an opportunity. Very useful verb.' },
+      { es: 'Me tardé una hora en llegar.', en: 'It took me an hour to get there.', tip: 'Tardarse = to take (time). Me tardé = it took me. ¿Cuánto te tardas? = how long does it take you? Very Mexican usage.' },
+      { es: 'Hay que fijarse bien.', en: 'You have to pay close attention.', tip: 'Fijarse = to notice / pay attention. ¡Fíjate! = look / check this out / pay attention. Super common in conversation.' },
+      { es: 'Se me antoja una pizza.', en: 'I\'m craving a pizza.', tip: 'Antojarse = to crave. Se me antoja = I\'m craving it. ¿Qué se te antoja? = what are you in the mood for? Very Mexican.' },
+      { es: 'Voy a echarle ganas.', en: 'I\'m going to give it my all / try hard.', tip: 'Echarle ganas = to put in effort. ¡Échale ganas! = give it your all! One of the most encouraging phrases in Mexican Spanish.' },
+      { es: 'Me choca el tráfico.', en: 'I hate traffic. / Traffic bugs me.', tip: 'Chocar = to crash, but also to annoy/hate. Me choca = it really bothers me. Me choca cuando... = I hate it when...' },
+      { es: 'Se armó un relajo.', en: 'It turned into chaos / a mess.', tip: 'Armarse un relajo = things got chaotic. Se armó = it set itself up. Relajo = mess/chaos. Mexican slang for when things go sideways.' },
+      { es: 'Voy a platicar con él.', en: 'I\'m going to talk / chat with him.', tip: 'Platicar = to chat/talk (very Mexican). More casual than hablar. ¿Platicamos? = shall we talk? Use this over conversar.' },
+    ]
+  },
+  numbers_money: {
+    label: '💰 Numbers & Money',
+    color: '#84cc16',
+    items: [
+      { es: 'Son doscientos cincuenta pesos.', en: 'It\'s two hundred and fifty pesos.', tip: 'Doscientos (200). Numbers 200-900: use -cientos for masc, -cientas for fem. Doscientas páginas (fem). Doscientos pesos (masc).' },
+      { es: '¿Me puede dar un descuento?', en: 'Can you give me a discount?', tip: 'Descuento = discount. ¿Hay descuento? = is there a discount? ¿Me hace precio? = can you give me a deal? (more casual)' },
+      { es: 'Se me acabó el dinero.', en: 'I ran out of money.', tip: 'Acabarse = to run out of. Se me acabó = it ran out on me. Se me acabó la gasolina = I ran out of gas. Very natural construction.' },
+      { es: 'Voy a pagar en efectivo / con tarjeta.', en: 'I\'m going to pay cash / with a card.', tip: 'Efectivo = cash. Con tarjeta = with card. ¿Aceptan tarjeta? = do you accept cards? Essential phrases for Mexico.' },
+      { es: 'Me salió caro / barato.', en: 'It turned out expensive / cheap for me.', tip: 'Salir = to turn out. Me salió caro = it ended up costing me a lot. ¿Cómo te salió? = how much did it cost you?' },
+      { es: 'A medias.', en: 'Split the bill / 50-50.', tip: 'A medias = split it down the middle. ¿Vamos a medias? = should we split it? Very common when paying with friends.' },
+    ]
+  },
+  connecting_words: {
+    label: 'Connecting Words',
+    color: '#f97316',
+    items: [
+      { es: 'Sin embargo, no estoy de acuerdo.', en: 'However, I don\'t agree.', tip: 'Sin embargo = however/nevertheless. More formal than pero. Use it to contrast ideas in writing or serious conversation.' },
+      { es: 'O sea, lo que quiero decir es...', en: 'I mean, what I\'m trying to say is...', tip: 'O sea = I mean / in other words. The most common filler in Mexican Spanish. Like "like" or "you know" in English.' },
+      { es: 'A pesar de todo, salió bien.', en: 'Despite everything, it turned out fine.', tip: 'A pesar de = despite / in spite of. A pesar de que + verb. A pesar de todo = despite everything.' },
+      { es: 'Además, tengo otra razón.', en: 'Besides, I have another reason.', tip: 'Además = besides / also / furthermore. Adds to what you said. Además de eso = on top of that.' },
+      { es: 'De todas formas, ya no importa.', en: 'Either way, it doesn\'t matter anymore.', tip: 'De todas formas = anyway / either way. De todas maneras means the same thing. Both are very common.' },
+      { es: 'Al fin y al cabo, somos familia.', en: 'When all is said and done, we\'re family.', tip: 'Al fin y al cabo = at the end of the day / when all is said and done. Great phrase for conclusions.' },
+      { es: 'Es que no tuve tiempo.', en: 'The thing is, I didn\'t have time.', tip: 'Es que = the thing is / it\'s that. Used to introduce an excuse or explanation. Very natural. "No fui, es que estaba cansado."' },
+      { es: 'Siempre y cuando me avises.', en: 'As long as you let me know.', tip: 'Siempre y cuando + subjunctive = as long as. Conditional permission. Puedes ir siempre y cuando llegues antes de las diez.' },
+    ]
   }
 }
 
