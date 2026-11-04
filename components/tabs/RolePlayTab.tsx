@@ -4,7 +4,7 @@ import type { User } from '@supabase/supabase-js'
 import { SCENARIOS } from '@/lib/data'
 
 interface Message { role: 'user' | 'assistant'; content: string }
-interface ChatMessage { from: 'migo' | 'you'; es: string; en?: string }
+interface ChatMessage { from: 'migo' | 'you'; es: string; en?: string; correction?: string }
 
 function speak(text: string, onDone?: () => void) {
   if (typeof window === 'undefined') return
@@ -66,7 +66,7 @@ export default function RolePlayTab({ user }: { user: User }) {
         })
       })
       const data = await res.json()
-      const migoMsg: ChatMessage = { from: 'migo', es: data.es, en: data.en }
+      const migoMsg: ChatMessage = { from: 'migo', es: data.es, en: data.en, correction: data.correction }
       setMessages(m => [...m, migoMsg])
       setHistory(h => [...h, { role: 'assistant', content: data.es }])
       speak(data.es)
@@ -191,7 +191,18 @@ export default function RolePlayTab({ user }: { user: User }) {
       {/* Messages */}
       <div style={{ flex:1, overflow:'auto', padding:'16px 20px', display:'flex', flexDirection:'column', gap:12 }}>
         {messages.map((m, i) => (
-          <div key={i} style={{ display:'flex', flexDirection:'column', alignItems: m.from === 'migo' ? 'flex-start' : 'flex-end' }}>
+          <div key={i} style={{ display:'flex', flexDirection:'column', alignItems: m.from === 'migo' ? 'flex-start' : 'flex-end', gap:6 }}>
+            {/* Correction bubble — shown above user's next message if Migo flagged an error */}
+            {m.from === 'migo' && m.correction && (
+              <div style={{
+                maxWidth:'90%', background:'#fef3c7', border:'1px solid #f59e0b',
+                borderRadius:12, padding:'10px 14px', fontSize:'0.82rem', color:'#92400e',
+                whiteSpace:'pre-wrap', lineHeight:1.5
+              }}>
+                <div style={{ fontWeight:700, marginBottom:4, fontSize:'0.75rem', textTransform:'uppercase', letterSpacing:'0.05em' }}>📝 Correction</div>
+                {m.correction}
+              </div>
+            )}
             <div style={{
               maxWidth:'80%', background: m.from === 'migo' ? 'var(--bg2)' : 'var(--accent)',
               borderRadius: m.from === 'migo' ? '4px 16px 16px 16px' : '16px 4px 16px 16px',
