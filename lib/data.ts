@@ -215,7 +215,47 @@ export const DECKS: Record<string, Deck> = {
   }
 }
 
-export interface Scenario {
+  verbs_regular: {
+    label: '📄 Regular Verbs (Present & Past)',
+    color: '#3b82f6',
+    items: [
+      { es: 'hablar → hablo / hablé / habló', en: 'to speak → I speak / I spoke / he spoke', tip: '-AR pattern: yo hablé, él habló. The accent on hablé (yo) is what separates it from habla (he speaks, present).' },
+      { es: 'trabajar → trabajo / trabajé / trabajó', en: 'to work → I work / I worked / he worked', tip: '-AR verbs all follow this exact pattern. Memorize hablé/habló and you know all regular -AR past tense.' },
+      { es: 'comprar → compro / compré / compró', en: 'to buy → I buy / I bought / he bought', tip: '-AR yo past always ends in -é (with accent). Él/ella always ends in -ó (with accent). No accent = present tense.' },
+      { es: 'comer → como / comí / comió', en: 'to eat → I eat / I ate / he ate', tip: '-ER past: yo comí, él comió. Note the accent on comí and comió. -ER and -IR past tense share the same endings.' },
+      { es: 'beber → bebo / bebí / bebió', en: 'to drink → I drink / I drank / he drank', tip: '-ER verbs: yo -í, él -ió. Same as -IR verbs. So comer, beber, vivir, escribir all share these past endings.' },
+      { es: 'aprender → aprendo / aprendí / aprendió', en: 'to learn → I learn / I learned / he learned', tip: 'Aprende (present) vs aprendió (past). The accent on aprendió is the only difference from aprende.' },
+      { es: 'vivir → vivo / viví / vivió', en: 'to live → I live / I lived / he lived', tip: '-IR past: same as -ER. Yo viví, él vivió. Viví (I lived) vs vivo (I live) — accent changes everything.' },
+      { es: 'escribir → escribo / escribí / escribió', en: 'to write → I write / I wrote / he wrote', tip: 'Key rule: -ER and -IR verbs have identical past tense endings. Only -AR is different.' },
+    ]
+  },
+  verbs_irregular: {
+    label: '📄 Irregular Verbs (Past Tense)',
+    color: '#7c3aed',
+    items: [
+      { es: 'tener → tuve / tuvo', en: 'to have → I had / he had', tip: 'Tuve/tuvo = no accent marks on irregulars! All the verbs in this group lose their accents. Tener → tuve/tuvo/tuviste/tuvimos/tuvieron.' },
+      { es: 'estar → estuve / estuvo', en: 'to be → I was / he was', tip: 'Estuve/estuvo follows the same pattern as tuve/tuvo. Same endings: -uve, -uvo, -uviste, -uvimos, -uvieron.' },
+      { es: 'poder → pude / pudo', en: 'to be able to → I could / he could', tip: 'Pude/pudo. Same family: tuve, estuve, pude, puse, supe. All have irregular stems + same endings.' },
+      { es: 'poner → puse / puso', en: 'to put → I put / he put', tip: 'Puse/puso. Memory trick: "I PUSE my foot in it." All these irregulars have no accent marks — that\'s how you know.' },
+      { es: 'saber → supe / supo', en: 'to know/find out → I found out / he found out', tip: 'Supe/supo. Saber in the past often means "found out" not just "knew." Supe la verdad = I found out the truth.' },
+      { es: 'venir → vine / vino', en: 'to come → I came / he came', tip: 'Vine/vino. Vino also means wine — same word, different context. Mi amigo vino = my friend came.' },
+      { es: 'hacer → hice / hizo', en: 'to do/make → I did / he did', tip: 'Hice/hizo — note the spelling change: hice (c) but hizo (z). The z prevents it sounding like "hiso." Classic spelling rule.' },
+      { es: 'decir → dije / dijo', en: 'to say → I said / he said', tip: 'Dije/dijo. Decir is totally irregular. The stem changes to dij-. Dijiste, dijimos, dijeron (note: NO i in dijeron).' },
+      { es: 'ir / ser → fui / fue', en: 'to go / to be → I went/was / he went/was', tip: 'Fui and fue serve BOTH ir and ser in the past. Context tells you which. Fui al mercado = I went. Fue difícil = it was hard.' },
+    ]
+  },
+  verbs_crecer: {
+    label: '📄 Crecer & Niñez Verbs',
+    color: '#059669',
+    items: [
+      { es: 'crecer → crezco / crecí / creció', en: 'to grow up → I grow / I grew up / he grew up', tip: 'Irregular yo present: crezco (not "creco"). But past tense is regular: crecí, creciste, creció, crecimos, crecieron.' },
+      { es: 'Crecí en la ciudad de Lima.', en: 'I grew up in the city of Lima.', tip: 'Crecí = I grew up. Perfect sentence to practice. Where did you grow up? Crecí en ___.' },
+      { es: 'Mi padre creció en el campo.', en: 'My father grew up in the countryside.', tip: 'Creció = he/she grew up. Same regular -ER ending. El campo = the countryside (vs la ciudad = the city).' },
+      { es: 'Viví en una casa pequeña, era muy cómoda.', en: 'I lived in a small house, it was very comfortable.', tip: 'Viví (preterite) for the fact, era (imperfect) for the description. This is the classic combination in storytelling.' },
+      { es: 'Mi abuelo tuvo un taller de mecánica.', en: 'My grandfather had a mechanic\'s workshop.', tip: 'Tuvo = he had (preterite). The workshop existed as a completed chapter. Compare: tenía = he had it ongoing.' },
+      { es: 'Me puse feliz porque fui al estadio.', en: 'I got happy because I went to the stadium.', tip: 'Ponerse = to become/get (emotion). Me puse feliz = I got happy. Me puse triste/nervioso/contento all work the same way.' },
+    ]
+  },
   title: string
   topic: string
   opener: { es: string; en: string }
