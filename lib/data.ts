@@ -212,9 +212,7 @@ export const DECKS: Record<string, Deck> = {
       { es: 'Es que no tuve tiempo.', en: 'The thing is, I didn\'t have time.', tip: 'Es que = the thing is / it\'s that. Used to introduce an excuse or explanation. Very natural. "No fui, es que estaba cansado."' },
       { es: 'Siempre y cuando me avises.', en: 'As long as you let me know.', tip: 'Siempre y cuando + subjunctive = as long as. Conditional permission. Puedes ir siempre y cuando llegues antes de las diez.' },
     ]
-  }
-}
-
+  },
   verbs_regular: {
     label: '📄 Regular Verbs (Present & Past)',
     color: '#3b82f6',
@@ -308,7 +306,10 @@ export const DECKS: Record<string, Deck> = {
       { es: 'Mi abuelo tuvo un taller de mecánica.', en: 'My grandfather had a mechanic\'s workshop.', tip: 'Tuvo = he had (preterite). The workshop existed as a completed chapter. Compare: tenía = he had it ongoing.' },
       { es: 'Me puse feliz porque fui al estadio.', en: 'I got happy because I went to the stadium.', tip: 'Ponerse = to become/get (emotion). Me puse feliz = I got happy. Me puse triste/nervioso/contento all work the same way.' },
     ]
-  },
+  }
+}
+
+interface Scenario {
   title: string
   topic: string
   opener: { es: string; en: string }
