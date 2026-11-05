@@ -244,6 +244,59 @@ export const DECKS: Record<string, Deck> = {
       { es: 'ir / ser → fui / fue', en: 'to go / to be → I went/was / he went/was', tip: 'Fui and fue serve BOTH ir and ser in the past. Context tells you which. Fui al mercado = I went. Fue difícil = it was hard.' },
     ]
   },
+  indirect_pronouns: {
+    label: '💬 Me, Te, Le, Nos, Les',
+    color: '#7c3aed',
+    items: [
+      { es: 'me → to/for me', en: 'indirect object: me', tip: 'Me goes BEFORE the verb. Mi mamá me hizo tacos = My mom made me tacos. The action goes TO me.' },
+      { es: 'te → to/for you', en: 'indirect object: you', tip: '¿Te puedo preguntar algo? = Can I ask you something? Te is for the person you\'re talking to directly.' },
+      { es: 'le → to/for him/her', en: 'indirect object: him or her', tip: 'Le is for a third person (singular). El mesero le trajo la cuenta = The waiter brought HIM the check. One person = le.' },
+      { es: 'nos → to/for us', en: 'indirect object: us', tip: 'Nos mandaron un mensaje = They sent US a message. Nos always refers to the group you\'re part of.' },
+      { es: 'les → to/for them', en: 'indirect object: them', tip: 'Les dije la verdad = I told THEM the truth. Multiple people = les. The only difference from le is singular vs plural.' },
+      { es: 'Mi abuela me enseña recetas.', en: 'My grandma teaches me recipes.', tip: '"a mí" in the sentence → use me. When you see "a mí" it confirms me. When you see "a él/ella" it confirms le.' },
+      { es: 'Le dije tres veces que no lo hiciera.', en: 'I told him three times not to do it.', tip: 'Le = to him. Dije = I told (preterite). After "told him not to" you need subjunctive: hiciera (not hizo).' },
+      { es: 'Yo le doy muy buenos consejos a mi hermano.', en: 'I give my brother very good advice.', tip: '"a mi hermano" = one person = le. If it were "a mis hermanos" (plural) you\'d use les instead.' },
+      { es: 'El gerente les explica el problema.', en: 'The manager explains the problem to them.', tip: '"a sus empleados" = multiple people = les. Always ask: one person or many? That\'s the only choice between le and les.' },
+      { es: 'Te puedo llevar si quieres.', en: 'I can give you a ride if you want.', tip: 'Te = to/for you. Super useful offer. Swap te for le (for him/her) or les (for them) to change who you\'re offering.' },
+      { es: '¿Me puedes explicar eso?', en: 'Can you explain that to me?', tip: 'Me before the verb = to me. Notice the verb order: me + verb. Never put the pronoun after the conjugated verb.' },
+      { es: 'Nos mandaron un mensaje raro anoche.', en: 'They sent us a weird message last night.', tip: 'Nos = to us. Mandaron = they sent (preterite). The subject "they" is implied — no need to say ellos.' },
+    ]
+  },
+  object_lo_la: {
+    label: '🎯 Lo, La, Los, Las (Direct)',
+    color: '#0891b2',
+    items: [
+      { es: 'lo → it/him (masculine)', en: 'direct object: lo', tip: 'Lo replaces a masculine noun. ¿Dónde está el libro? No lo veo. = Where\'s the book? I don\'t see IT. Lo = the book (masculine).' },
+      { es: 'la → it/her (feminine)', en: 'direct object: la', tip: 'La replaces a feminine noun. ¿Tienes la llave? Sí, la tengo. = Do you have the key? Yes, I have IT. La = la llave (feminine).' },
+      { es: 'los → them (masculine plural)', en: 'direct object: them (masc)', tip: 'Los for masculine plural nouns. ¿Compraste los tacos? Sí, los compré. = Did you buy the tacos? Yes, I bought THEM.' },
+      { es: 'las → them (feminine plural)', en: 'direct object: them (fem)', tip: 'Las for feminine plural. ¿Tienes las llaves? No las encuentro. = Do you have the keys? I can\'t find THEM.' },
+      { es: 'Lo hice sin pensar.', en: 'I did it without thinking.', tip: 'Lo hice = I did IT. Lo here refers to the action/thing. Hice is irregular past of hacer: yo hice, él hizo.' },
+      { es: 'No lo puedo creer.', en: 'I can\'t believe it.', tip: 'Super common phrase. Lo = it (the situation). You\'ll hear this constantly in Mexican Spanish.' },
+      { es: 'Ya lo sé.', en: 'I already know (it).', tip: 'Ya lo sé = I already know. Ya = already. Lo sé sounds more natural than just sé alone in Mexican Spanish.' },
+      { es: 'Te habría llamado pero mi celular se murió justo cuando estaba a punto de hacerlo.', en: 'I would have called you but my phone died right when I was about to.', tip: 'Hacerlo = to do IT. Lo at the end of an infinitive refers back to the action. A punto de = about to (memorize this phrase).' },
+      { es: 'Lo hizo de todas formas.', en: 'He did it anyway.', tip: 'De todas formas = anyway/regardless. Super useful. Lo hizo = he did it. Lo refers back to whatever action was discussed.' },
+      { es: 'No lo entiendo para nada.', en: 'I don\'t understand it at all.', tip: 'Para nada = not at all. Stronger than just no. No lo entiendo = I don\'t understand it.' },
+    ]
+  },
+  hacer_irregular: {
+    label: '⚡ Hice, Hizo & Key Irregulars',
+    color: '#dc2626',
+    items: [
+      { es: 'hacer → hice / hizo', en: 'to do/make → I did / he did', tip: 'SPELLING RULE: hice (c) but hizo (z). Why? To keep the "s" sound. If it were "hizo" with c it would sound like "ee-ko." Classic rule.' },
+      { es: 'Lo hice yo solo.', en: 'I did it by myself.', tip: 'Hice = I did/made. Yo solo = by myself. Adding yo is optional but adds emphasis. ¿Quién lo hizo? Yo lo hice.' },
+      { es: '¿Qué hiciste ayer?', en: 'What did you do yesterday?', tip: 'Hiciste = you did (tú). Full conjugation: hice, hiciste, hizo, hicimos, hicieron. Notice no accent on hizo.' },
+      { es: 'Mi jefa hizo todo el trabajo.', en: 'My boss did all the work.', tip: 'Hizo = he/she did. The z spelling only appears in hizo (third person singular). All other forms use c.' },
+      { es: 'decir → dije / dijo / dijeron', en: 'to say → I said / he said / they said', tip: 'TRAP: dijeron not "dijieron." When the stem ends in j, drop the i in the ellos form. Dij + eron (not dij + ieron).' },
+      { es: 'Le dije que no lo hiciera.', en: 'I told him not to do it.', tip: 'Dije = I said/told. After "told someone not to" → subjunctive: hiciera (past subjunctive of hacer). Two irregulars in one sentence.' },
+      { es: 'ir/ser → fui / fue / fueron', en: 'to go/be → I went/was / he went / they went', tip: 'Fui and fue work for BOTH ir and ser. Context tells you which. Fui al gym = I went. Fue difícil = it was hard. Fueron = they went/were.' },
+      { es: 'tener → tuve / tuvo', en: 'to have → I had / he had', tip: 'Tuve/tuvo. Tener is completely irregular in past. Tuve que salir = I had to leave (and did). Compare: tenía que = was supposed to.' },
+      { es: 'poder → pude / pudo', en: 'can/to be able → I could / he could', tip: 'Pude/pudo. No pude dormir = I couldn\'t sleep. No pudo venir = He couldn\'t come. Very common in everyday speech.' },
+      { es: 'poner → puse / puso', en: 'to put → I put / he put', tip: 'Puse/puso. Me puse nervioso = I got nervous. Ponerse + emotion = to become/get. Puse la bolsa aquí = I put the bag here.' },
+      { es: 'saber → supe / supo', en: 'to know → I found out / he found out', tip: 'In the past tense, saber changes meaning: supe = I found out (not just "I knew"). Supe la verdad ayer = I found out the truth yesterday.' },
+      { es: 'venir → vine / vino', en: 'to come → I came / he came', tip: 'Vine/vino. Vino also means wine — same spelling. Mi amigo vino tarde = My friend came late. Vine solo = I came alone.' },
+      { es: 'querer → quise / quiso', en: 'to want → I wanted / he wanted', tip: 'Quise/quiso. In past tense: quise = I tried to / wanted to. No quise ir = I didn\'t want to go (and didn\'t). Very different from quería.' },
+    ]
+  },
   verbs_crecer: {
     label: '📄 Crecer & Niñez Verbs',
     color: '#059669',
