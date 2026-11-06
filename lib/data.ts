@@ -306,6 +306,52 @@ export const DECKS: Record<string, Deck> = {
       { es: 'Mi abuelo tuvo un taller de mecánica.', en: 'My grandfather had a mechanic\'s workshop.', tip: 'Tuvo = he had (preterite). The workshop existed as a completed chapter. Compare: tenía = he had it ongoing.' },
       { es: 'Me puse feliz porque fui al estadio.', en: 'I got happy because I went to the stadium.', tip: 'Ponerse = to become/get (emotion). Me puse feliz = I got happy. Me puse triste/nervioso/contento all work the same way.' },
     ]
+  },
+  preterite_er_regular: {
+    label: '⏪ Preterite: -ER Verbs (comer, beber, vender)',
+    color: '#0891b2',
+    items: [
+      { es: 'comer → comí, comiste, comió, comimos, comisteis, comieron', en: 'to eat → I ate, you ate, he/she ate…', tip: '-ER preterite endings: -í, -iste, -ió, -imos, -isteis, -ieron. Same endings for -IR verbs!' },
+      { es: 'Ayer comí arroz con pollo en casa.', en: 'Yesterday I ate rice with chicken at home.', tip: 'Comí = I ate (yo form). Remove -er from comer → com- + í. Accent on the í is required.' },
+      { es: '¿Tú comiste algo antes del viaje?', en: 'Did you eat something before the trip?', tip: 'Comiste = you ate (tú form). No accent on comiste — that\'s a common mistake. Only yo and él/ella have accents.' },
+      { es: 'Ana comió una sopa para el almuerzo.', en: 'Ana ate a soup for lunch.', tip: 'Comió = she ate (él/ella form). The accent on the ó matters — without it, como = I eat (present).' },
+      { es: 'beber → bebí, bebiste, bebió, bebimos, bebisteis, bebieron', en: 'to drink → I drank, you drank, he/she drank…', tip: 'Same endings as comer. Remove -er → beb- then add endings. Notice ER and IR share the same preterite endings.' },
+      { es: 'Bebí un té antes de salir.', en: 'I drank a tea before leaving.', tip: 'Bebí = I drank. Quick pattern check: yo always gets the accented -í for -ER/-IR verbs in preterite.' },
+      { es: 'Mis amigos bebieron limonada después del partido.', en: 'My friends drank lemonade after the game.', tip: 'Bebieron = they drank. The -ieron ending is shared by all -ER and -IR regular verbs in the ellos/ellas form.' },
+      { es: 'vender → vendí, vendiste, vendió, vendimos, vendisteis, vendieron', en: 'to sell → I sold, you sold, he/she sold…', tip: 'Vender follows the exact same pattern. Remove -er → vend- + endings. 100% regular.' },
+      { es: 'Vendí mi guitarra el mes pasado.', en: 'I sold my guitar last month.', tip: 'Vendí = I sold. El mes pasado = last month — a classic preterite time marker.' },
+      { es: 'Ana vendió todas sus pulseras en la feria.', en: 'Ana sold all her bracelets at the fair.', tip: 'Vendió = she sold. When you see -ió at the end, that\'s always the él/ella preterite for -ER or -IR verbs.' },
+      { es: 'Nosotros vendimos empanadas para pagar el viaje.', en: 'We sold empanadas to pay for the trip.', tip: 'Vendimos = we sold. The nosotros form has NO accent in preterite — this is the same as the present tense form for -AR verbs, but different for -ER/-IR.' },
+      { es: 'Mis vecinos vendieron su carro la semana pasada.', en: 'My neighbors sold their car last week.', tip: 'Vendieron = they sold. La semana pasada = last week. Time expressions like this always signal preterite.' },
+    ]
+  },
+  preterite_traer: {
+    label: '⚡ Preterite: Traer (Irregular)',
+    color: '#7c3aed',
+    items: [
+      { es: 'traer → traje, trajiste, trajo, trajimos, trajisteis, trajeron', en: 'to bring → I brought, you brought, he/she brought…', tip: 'IRREGULAR root: traj-. Notice the endings are different from regular: -e, -iste, -o, -imos, -isteis, -eron (no i before eron). No accents anywhere!' },
+      { es: 'Ayer traje un postre para compartir.', en: 'Yesterday I brought a dessert to share.', tip: 'Traje = I brought (yo). Note: traje has NO accent, unlike regular yo forms (comí). Irregular verbs lose the accent.' },
+      { es: '¿Tú trajiste el cargador del celular?', en: 'Did you bring the phone charger?', tip: 'Trajiste = you brought. Same -iste ending as regular verbs. The irregularity is in the root (traj-), not the endings.' },
+      { es: 'Ana trajo una botella de agua para el viaje.', en: 'Ana brought a water bottle for the trip.', tip: 'Trajo = she/he brought. Note: trajo NOT trajó — no accent. This trips up learners used to comió/bebió.' },
+      { es: 'Nosotros trajimos un regalo para la anfitriona.', en: 'We brought a gift for the host.', tip: 'Trajimos = we brought. The -imos ending is the same as regular -ER verbs. Root stays traj-.' },
+      { es: 'Mis primos trajeron fotos de sus vacaciones.', en: 'My cousins brought photos from their vacation.', tip: 'Trajeron = they brought. KEY RULE: -eron not -ieron. Verbs with j in the stem always drop the i: trajeron, dijeron, condujeron.' },
+      { es: 'decir → dije, dijiste, dijo, dijimos, dijisteis, dijeron', en: 'to say → I said, you said, he/she said…', tip: 'Decir follows the same pattern as traer — irregular root (dij-) and -eron ending. Dije, dijiste, dijo, dijimos, dijisteis, dijeron.' },
+      { es: '¿Qué dijiste? No te escuché.', en: 'What did you say? I didn\'t hear you.', tip: 'Dijiste = you said. If you remember traj- for traer, remember dij- for decir. Both follow the j-stem pattern.' },
+      { es: 'Ella trajo todo lo que necesitábamos.', en: 'She brought everything we needed.', tip: 'Trajo + lo que = brought what/everything that. Lo que = what / that which. Very common structure.' },
+    ]
+  },
+  preterite_coger: {
+    label: '🚌 Preterite: Coger (Regular -ER)',
+    color: '#16a34a',
+    items: [
+      { es: 'coger → cogí, cogiste, cogió, cogimos, cogisteis, cogieron', en: 'to take/catch/grab → I took, you took, he/she took…', tip: 'Coger is 100% regular in the preterite. Remove -er → cog- + standard endings. Used constantly in Spain for taking transport.' },
+      { es: 'Ayer cogí el metro para ir al centro de Madrid.', en: 'Yesterday I took the metro to go to the city center.', tip: 'Cogí = I took. Coger el metro/autobús/tren = to take the metro/bus/train. Very common in Spain. Latin America uses tomar.' },
+      { es: 'Yo cogí las llaves antes de salir.', en: 'I grabbed the keys before leaving.', tip: 'Cogí = I grabbed/took. Coger las llaves = to grab the keys. Super common daily action.' },
+      { es: '¿Tú cogiste el último autobús anoche?', en: 'Did you catch the last bus last night?', tip: 'Cogiste = you caught/took. ¿Cogiste el autobús? is a totally natural question in Spain.' },
+      { es: 'Ana cogió un paraguas al salir de casa.', en: 'Ana grabbed an umbrella when leaving the house.', tip: 'Cogió = she grabbed. Al salir de casa = when leaving the house. Al + infinitive = when doing something.' },
+      { es: 'Nosotros cogimos el tren de las ocho.', en: 'We took the 8 o\'clock train.', tip: 'Cogimos = we took. El tren de las ocho = the eight o\'clock train. Very natural travel phrase.' },
+      { es: '⚠️ Regional note: coger vs tomar', en: 'In Spain: coger el metro. In Latin America: tomar el metro.', tip: 'IMPORTANT: In many Latin American countries, "coger" has a vulgar meaning. In Spain it\'s completely neutral and used constantly. Use "tomar" when in doubt or in Latin American context.' },
+    ]
   }
 }
 
