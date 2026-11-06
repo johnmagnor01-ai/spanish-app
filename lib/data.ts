@@ -352,6 +352,24 @@ export const DECKS: Record<string, Deck> = {
       { es: 'Nosotros cogimos el tren de las ocho.', en: 'We took the 8 o\'clock train.', tip: 'Cogimos = we took. El tren de las ocho = the eight o\'clock train. Very natural travel phrase.' },
       { es: '⚠️ Regional note: coger vs tomar', en: 'In Spain: coger el metro. In Latin America: tomar el metro.', tip: 'IMPORTANT: In many Latin American countries, "coger" has a vulgar meaning. In Spain it\'s completely neutral and used constantly. Use "tomar" when in doubt or in Latin American context.' },
     ]
+  },
+  vocab_gaps: {
+    label: '🎯 Words You Keep Missing',
+    color: '#dc2626',
+    items: [
+      { es: 'aparecer → apareció', en: 'to show up → he/she showed up', tip: 'Never say "showed up" in Spanish. Apareció = appeared/showed up. ¿Por qué nunca apareces? = Why do you never show up?' },
+      { es: 'reprobar → reprobé el examen', en: 'to fail (exam) → I failed the exam', tip: 'Reprobar = to fail an exam (Mexico/Latin America). Spain uses suspender. Reprobé, reprobaste, reprobó.' },
+      { es: 'cometer un error → cometió un error enorme', en: 'to make a mistake → he made a huge mistake', tip: 'NEVER hacer un error. Always cometer un error. Cometer = to commit. Cometí un error = I made a mistake.' },
+      { es: 'pedir prestado → me pidió dinero prestado', en: 'to borrow → he borrowed money from me', tip: 'Borrow = pedir prestado (ask to lend). Lend = prestar. Me pidió prestado = borrowed from me. Me prestó = lent me.' },
+      { es: 'funcionar → nada funcionó', en: 'to work (function) → nothing worked', tip: 'Funcionar = to work/function (for things). Trabajar = to work (for people at a job). ¿Funciona? = Does it work?' },
+      { es: 'encontrarse con → me encontré con mi ex', en: 'to run into → I ran into my ex', tip: 'Encontrarse con = to run into / bump into someone. Always reflexive. Me encontré con = I ran into. ¿Te encontraste con alguien? = Did you run into anyone?' },
+      { es: 'enterarse → me enteré más tarde', en: 'to find out → I found out later', tip: 'Enterarse = to find out / learn about something. Me enteré = I found out. ¿Cómo te enteraste? = How did you find out?' },
+      { es: 'valer la pena → valió la pena', en: 'to be worth it → it was worth it', tip: 'Valer la pena = to be worth it. Valió la pena = it was worth it. ¿Vale la pena? = Is it worth it? No vale la pena = it\'s not worth it.' },
+      { es: 'ni siquiera → ni siquiera dijo gracias', en: 'not even → didn\'t even say thank you', tip: 'Ni siquiera = not even. Super common. Ni siquiera intentó = didn\'t even try. Ni siquiera me llamó = didn\'t even call me.' },
+      { es: 'que iba a + infinitivo → prometió que iba a venir', en: 'was going to → promised he was going to come', tip: 'Iba a + infinitive = was going to do something (future in the past). Dijo que iba a llamar = said he was going to call. Essential for reporting what someone said.' },
+      { es: 'devolver → nunca me lo devolvió', en: 'to return/give back → never gave it back to me', tip: 'Devolver = to return something. Me lo devolvió = gave it back to me. ¿Me lo puedes devolver? = Can you give it back to me?' },
+      { es: 'dije vs dijo', en: 'I said vs he/she said', tip: 'DIJE = I said (yo). DIJO = he/she said (él/ella). You keep swapping these. Trick: dije ends in E like yo forms. Dijo ends in O like él forms.' },
+    ]
   }
 }
 
