@@ -20,6 +20,44 @@ function setupMediaSession(deckLabel: string, cardText: string, onStop: () => vo
   navigator.mediaSession.playbackState = 'playing'
 }
 
+// Keep audio alive when screen locks / app goes to background
+// Web Speech API pauses unless there's an active audio context
+let silentAudio: HTMLAudioElement | null = null
+function startSilentAudio() {
+  if (typeof window === 'undefined') return
+  if (silentAudio) return
+  // 1-second silent MP3 as base64 — keeps audio session alive
+  const silentMp3 = 'data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsgU291bmQgRWZmZWN0cwBMYXZmNTguNzYuMTAwAAAAAAAAAAAAAAD/+0DEAAAHCABmhAAAIgpS3FQYAB//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=='
+  silentAudio = new Audio(silentMp3)
+  silentAudio.loop = true
+  silentAudio.volume = 0.001
+  silentAudio.play().catch(() => {})
+}
+function stopSilentAudio() {
+  if (silentAudio) {
+    silentAudio.pause()
+    silentAudio = null
+  }
+}
+
+// Chrome/Safari bug: speechSynthesis pauses after ~15s in background
+// Fix: cancel and re-speak the current utterance periodically
+let resumeInterval: ReturnType<typeof setInterval> | null = null
+function startResumeLoop() {
+  if (resumeInterval) return
+  resumeInterval = setInterval(() => {
+    if (typeof window !== 'undefined' && window.speechSynthesis.paused) {
+      window.speechSynthesis.resume()
+    }
+  }, 5000)
+}
+function stopResumeLoop() {
+  if (resumeInterval) {
+    clearInterval(resumeInterval)
+    resumeInterval = null
+  }
+}
+
 function speak(text: string, lang: string, onDone?: () => void) {
   if (typeof window === 'undefined') return
   window.speechSynthesis.cancel()
@@ -62,6 +100,8 @@ export default function LessonTab({ user }: { user: User }) {
     if (!deck) return
     setPlaying(true)
     playRef.current = true
+    startSilentAudio()
+    startResumeLoop()
     let idx = 0
 
     function playCard() {
@@ -87,6 +127,8 @@ export default function LessonTab({ user }: { user: User }) {
     playRef.current = false
     window.speechSynthesis.cancel()
     setPlaying(false)
+    stopSilentAudio()
+    stopResumeLoop()
     if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
       navigator.mediaSession.playbackState = 'none'
     }
