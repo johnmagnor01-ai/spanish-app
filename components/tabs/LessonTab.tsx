@@ -4,6 +4,22 @@ import type { User } from '@supabase/supabase-js'
 import { DECKS } from '@/lib/data'
 import { createClient } from '@/lib/supabase'
 
+function setupMediaSession(deckLabel: string, cardText: string, onStop: () => void) {
+  if (typeof window === 'undefined' || !('mediaSession' in navigator)) return
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: cardText,
+    artist: 'Migo Spanish',
+    album: deckLabel,
+    artwork: [
+      { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+  })
+  navigator.mediaSession.setActionHandler('pause', onStop)
+  navigator.mediaSession.setActionHandler('stop', onStop)
+  navigator.mediaSession.playbackState = 'playing'
+}
+
 function speak(text: string, lang: string, onDone?: () => void) {
   if (typeof window === 'undefined') return
   window.speechSynthesis.cancel()
@@ -31,6 +47,7 @@ export default function LessonTab({ user }: { user: User }) {
   const [done, setDone] = useState(false)
   const supabase = createClient()
   const playRef = useRef(true)
+  const stopRef = useRef<() => void>(() => {})
 
   const deck = deckKey ? DECKS[deckKey] : null
 
@@ -56,6 +73,7 @@ export default function LessonTab({ user }: { user: User }) {
       setCardIdx(idx)
       const item = deck.items[idx]
       idx++
+      setupMediaSession(deck.label, item.es, stopRef.current)
       speakSeq([
         { text: item.es, lang: 'es-MX', pause: 800 },
         { text: item.en, lang: 'en-US', pause: 700 },
@@ -69,7 +87,11 @@ export default function LessonTab({ user }: { user: User }) {
     playRef.current = false
     window.speechSynthesis.cancel()
     setPlaying(false)
+    if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
+      navigator.mediaSession.playbackState = 'none'
+    }
   }
+  stopRef.current = stopLesson
 
   async function saveProgress() {
     const today = new Date().toISOString().slice(0, 10)
