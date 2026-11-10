@@ -423,6 +423,43 @@ export const DECKS: Record<string, Deck> = {
       { es: 'el tamaño', en: 'the size', tip: 'Adoptó un perro de gran tamaño. Tamaño = the size or dimension of something. ¿De qué tamaño lo quieres? = What size do you want it?' },
       { es: 'la marca distintiva', en: 'the distinguishing mark / trademark feature', tip: 'Su marca distintiva era su manera de expresarse. Distintivo/a = distinctive, that sets something apart. Used for unique qualities in people, brands, or products.' },
     ]
+  },
+
+  irregular_preterite: {
+    label: 'Irregular Preterites (-uv, -ij, -ic, -us)',
+    color: '#7c3aed',
+    items: [
+      { es: 'tuve / tuvo / tuvimos / tuvieron', en: 'I had / he had / we had / they had', tip: 'Tener → tuve. Part of the -uv group. No accent marks on irregular preterites. Tuve un accidente. ¿Qué tuviste?' },
+      { es: 'estuve / estuvo / estuvimos / estuvieron', en: 'I was / he was / we were / they were', tip: 'Estar → estuve. Same -uv pattern as tener. ¿Dónde estuviste? Estuve en casa todo el día.' },
+      { es: 'anduve / anduvo / anduvimos / anduvieron', en: 'I walked / he walked / we walked / they walked', tip: 'Andar → anduve. Third -uv verb. Anduvimos lentamente a la escuela.' },
+      { es: 'dije / dijo / dijimos / dijeron', en: 'I said / he said / we said / they said', tip: 'Decir → dije. The -ij group. Note: dijeron not dijieron — drop the i. ¿Qué te dijo? No le dije nada.' },
+      { es: 'traje / trajo / trajimos / trajeron', en: 'I brought / he brought / we brought / they brought', tip: 'Traer → traje. Same -ij pattern as decir. Traje vino. Mis amigos no trajeron nada.' },
+      { es: 'produje / produjo / produjimos / produjeron', en: 'I produced / he produced / we produced / they produced', tip: 'Producir → produje. All -ucir verbs follow this: conducir → conduje, traducir → traduje.' },
+      { es: 'hice / hizo / hicimos / hicieron', en: 'I did / he did / we did / they did', tip: 'Hacer → hice. Watch the él form: hizo (not hice) — spelling changes to keep the s sound. ¿Qué hicieron Uds.?' },
+      { es: 'puse / puso / pusimos / pusieron', en: 'I put / he put / we put / they put', tip: 'Poner → puse. The -us group. Los niños pusieron los platos en el horno.' },
+      { es: 'pude / pudo / pudimos / pudieron', en: 'I could / he could / we could / they could', tip: 'Poder → pude. Same -us pattern. No pude dormir. ¿Pudiste terminar?' },
+      { es: 'vine / vino / vinimos / vinieron', en: 'I came / he came / we came / they came', tip: 'Venir → vine. ¿Por qué vinieron Uds. en tren? Vino a las tres.' },
+      { es: 'fui / fue / fuimos / fueron', en: 'I went OR I was / he went OR he was / we went OR we were', tip: 'Ir and ser share the exact same preterite. Context tells them apart. Fui al banco = I went. Fui estudiante = I was a student.' },
+      { es: 'hubo', en: 'there was / there were', tip: 'Haber in preterite = only hubo. Hubo una fiesta ayer. Hubo muchos problemas. Never hubieron — always singular hubo.' },
+      { es: 'cupe / cupo / cupimos / cupieron', en: 'I fit / it fit / we fit / they fit', tip: 'Caber = to fit. Once payasos cupieron en el carro. Rare but tested. No cupe en el asiento.' },
+    ]
+  },
+
+  indirect_object_pronouns: {
+    label: 'Indirect Object Pronouns',
+    color: '#0891b2',
+    items: [
+      { es: 'me / te / le / nos / les', en: 'to me / to you / to him-her-you(formal) / to us / to them-you(all)', tip: 'These answer "to whom" or "for whom." Me = to me. Te = to you. Le = to him/her/Ud. Nos = to us. Les = to them/Uds.' },
+      { es: 'El maestro les cobra a sus estudiantes.', en: 'The teacher charges his students.', tip: 'Les = to them (the students). "A sus estudiantes" clarifies who les refers to — this is normal in Spanish and not redundant.' },
+      { es: 'Me fascina jugar al tenis.', en: 'Playing tennis fascinates me.', tip: 'Me fascina = it fascinates me. The subject is jugar, the indirect object is me. Same pattern: me gusta, me conviene, me importa.' },
+      { es: 'Elena le da a su hermano los bolígrafos.', en: 'Elena gives her brother the pens.', tip: 'Le = to her brother. "A su hermano" is the clarifier. Le da = gives to him. The direct object is los bolígrafos.' },
+      { es: 'Ella me quiere contar / Ella quiere contarme', en: 'She wants to tell me', tip: 'With two verbs, the pronoun goes before the first OR attaches to the infinitive. Both are correct. Me quiere contar = quiere contarme.' },
+      { es: 'Nosotros les vamos a escribir el viernes.', en: 'We are going to write to them on Friday.', tip: 'Les vamos a escribir = vamos a escribirles. Ir a + infinitive — pronoun floats to either position.' },
+      { es: 'Te presto mis libros todo el tiempo.', en: 'I lend you my books all the time.', tip: 'Te = to you. Prestar = to lend. Compare: pedir prestado = to borrow. Te presto = I lend to you. Me prestas = you lend to me.' },
+      { es: '¿Puede Ud. venderme dos maletas?', en: 'Can you sell me two suitcases?', tip: 'Me attached to the infinitive vender → venderme. Pronoun glued to infinitive is common in questions and polite requests.' },
+      { es: 'El camarero le trae al hombre un vaso de agua.', en: 'The waiter brings the man a glass of water.', tip: 'Le = to him (the man). "Al hombre" clarifies. Direct object = un vaso de agua. Indirect object = al hombre.' },
+      { es: 'No sé si me quiere hablar / quiere hablarme.', en: "I don't know if he wants to talk to me.", tip: 'Again both positions work. Me quiere hablar or quiere hablarme — same meaning. Pick one and be consistent.' },
+    ]
   }
 }
 
