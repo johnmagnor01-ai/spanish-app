@@ -408,6 +408,21 @@ export const DECKS: Record<string, Deck> = {
       { es: 'mereció la pena', en: 'it was worth it', tip: 'Aunque cambiamos de plan, mereció la pena reunirnos. Merecer la pena = to be worth it. ¿Mereció la pena? = Was it worth it? Same as valió la pena.' },
       { es: 'preparar una sorpresa', en: 'to prepare a surprise', tip: 'Preparamos un pastel para sorprender a nuestra amiga. Sorpresa = surprise. Sorprender = to surprise. Me sorprendió mucho = it really surprised me.' },
     ]
+  },
+
+  vocab_productos: {
+    label: 'Vocab: Productos y Diseño',
+    color: '#e11d48',
+    source: 'VOCABULARIO_NUEVO.pdf',
+    items: [
+      { es: 'la etiqueta', en: 'the label / tag', tip: 'La etiqueta de la maleta es de alta resistencia. Etiqueta = label on a product or its packaging. Also means "label" in a social sense (etiqueta social = social etiquette).' },
+      { es: 'el rayón', en: 'the scratch / scuff', tip: 'Mi maleta se rayó al caerse. Rayón = a scratch caused by damage or scraping. Rayar = to scratch. ¡Qué desgracia! / ¡Qué pena! = What a shame!' },
+      { es: 'las medidas', en: 'the measurements / dimensions', tip: 'Las medidas son: alto, ancho y fondo. Alto = height, ancho = width, fondo = depth. ¡Suena genial! / ¡Suena bien! = Sounds great!' },
+      { es: 'el estampado', en: 'the print / pattern (on fabric)', tip: 'Ella compró un vestido con estampado floral. Estampado = a printed design on fabric or other surfaces. ¡Está re barato! = It\'s super cheap!' },
+      { es: 'la pegatina', en: 'the sticker', tip: 'De niño, me gustaba poner pegatinas en mis diarios. Pegatina = adhesive sticker. ¡Qué tierno! / ¡Qué dulce! = How sweet/cute!' },
+      { es: 'el tamaño', en: 'the size', tip: 'Adoptó un perro de gran tamaño. Tamaño = the size or dimension of something. ¿De qué tamaño lo quieres? = What size do you want it?' },
+      { es: 'la marca distintiva', en: 'the distinguishing mark / trademark feature', tip: 'Su marca distintiva era su manera de expresarse. Distintivo/a = distinctive, that sets something apart. Used for unique qualities in people, brands, or products.' },
+    ]
   }
 }
 
