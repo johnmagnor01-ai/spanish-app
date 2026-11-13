@@ -445,6 +445,29 @@ export const DECKS: Record<string, Deck> = {
     ]
   },
 
+  vocab_aeropuerto: {
+    label: 'Vocab: En el Aeropuerto',
+    color: '#0d9488',
+    source: 'SUCESO_EN_EL_AEROPUERTO.pdf',
+    items: [
+      { es: 'la etiqueta', en: 'the label / tag', tip: 'La etiqueta de tu maleta tiene tu nombre. The label on your suitcase has your name. Use this to prove ownership.' },
+      { es: 'el rayón', en: 'the scratch / scuff', tip: 'Mi maleta tiene un rayón en el lado izquierdo. My suitcase has a scratch on the left side. A distinctive damage mark.' },
+      { es: 'las medidas', en: 'the measurements / dimensions', tip: 'Las medidas de mi maleta son 60 x 40 cm. The measurements of my suitcase are 60 x 40 cm. Used to describe size precisely.' },
+      { es: 'el estampado', en: 'the print / pattern', tip: 'Mi maleta tiene un estampado de hojas. My suitcase has a leaf pattern. Refers to fabric or surface design.' },
+      { es: 'la pegatina', en: 'the sticker', tip: 'Puse una pegatina de sol en mi maleta para reconocerla. I put a sun sticker on my suitcase to recognize it. Classic way to ID your bag.' },
+      { es: 'el tamaño', en: 'the size', tip: 'El tamaño de mi maleta es mediano. The size of my suitcase is medium. Pequeña / mediana / grande.' },
+      { es: 'la marca distintiva', en: 'the distinguishing mark', tip: 'La marca distintiva de mi maleta es el lazo rojo. The distinguishing mark of my suitcase is the red bow. What makes yours different from all others.' },
+      { es: 'la cinta transportadora', en: 'the baggage carousel / conveyor belt', tip: 'Recogí mi maleta de la cinta transportadora. I picked up my suitcase from the carousel. Where you grab bags after landing.' },
+      { es: 'el equipaje de mano', en: 'hand luggage / carry-on', tip: 'Solo llevo equipaje de mano para no esperar. I only carry hand luggage so I don\'t have to wait. What goes in the overhead bin.' },
+      { es: 'la recogida de equipaje', en: 'baggage claim', tip: 'Nos vemos en la recogida de equipaje. See you at baggage claim. The whole area after arrivals.' },
+      { es: 'el guardia de seguridad', en: 'the security guard', tip: 'Tuve que llamar al guardia de seguridad porque ella no quería devolvermela. I had to call the security guard because she didn\'t want to give it back.' },
+      { es: 'llevar vs traer', en: 'to take away vs to bring here', tip: 'LLEVAR = you leave with it (going away). TRAER = you bring it here (coming toward). Llevo mi maleta al hotel. Trae tu pasaporte aquí.' },
+      { es: 'recoger', en: 'to pick up / collect', tip: 'Fui a recoger mi maleta. I went to pick up my suitcase. Use for collecting luggage, food orders, kids from school.' },
+      { es: 'devolver', en: 'to give back / return something', tip: 'Por favor devuélvame mi maleta. Please give me back my suitcase. Te lo devuelvo mañana = I\'ll give it back to you tomorrow.' },
+      { es: 'hambriento/a', en: 'hungry / starving for affection', tip: 'Two meanings: 1) Estaba muy hambriento = was very hungry. 2) Era hambrienta de cariño = starved for affection (Ecuador/Chile). Context decides.' },
+    ]
+  },
+
   indirect_object_pronouns: {
     label: 'Indirect Object Pronouns',
     color: '#0891b2',
