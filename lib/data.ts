@@ -12,6 +12,33 @@ export interface Deck {
 }
 
 export const DECKS: Record<string, Deck> = {
+  falsos_amigos: {
+    label: 'False Friends (Falsos Amigos)',
+    color: '#dc2626',
+    source: 'False Friends Reference',
+    items: [
+      { es: 'actualmente', en: 'currently / nowadays (NOT "actually")', tip: '"Actually" = en realidad / de hecho. Actualmente means right now/these days. "Actualmente vivo en México" = I currently live in Mexico.' },
+      { es: 'embarazada', en: 'pregnant (NOT "embarrassed")', tip: '"Embarrassed" = avergonzado/a. Classic trap — "Estoy embarazada" does NOT mean "I\'m embarrassed." It means "I\'m pregnant."' },
+      { es: 'constipado/a', en: 'to have a cold / congested (NOT "constipated")', tip: '"Constipated" = estreñido/a. "Estoy constipado" = I have a cold. Completely different from what an English speaker thinks.' },
+      { es: 'sensible', en: 'sensitive (NOT "sensible")', tip: '"Sensible" = sensato/a / razonable. "Es muy sensible" = He\'s very sensitive, not sensible.' },
+      { es: 'simpático/a', en: 'nice / friendly / likeable (NOT "sympathetic")', tip: '"Sympathetic" = comprensivo/a. "Es muy simpático" = He\'s very nice/friendly.' },
+      { es: 'éxito', en: 'success (NOT "exit")', tip: '"Exit" = salida. "Tuvo mucho éxito" = He had a lot of success. ¡Con éxito! = Successfully!' },
+      { es: 'fábrica', en: 'factory (NOT "fabric")', tip: '"Fabric" = tela / tejido. "Trabaja en una fábrica" = He works in a factory.' },
+      { es: 'librería', en: 'bookstore (NOT "library")', tip: '"Library" = biblioteca. Librería is where you BUY books. Biblioteca is where you BORROW them.' },
+      { es: 'ropa', en: 'clothes (NOT "rope")', tip: '"Rope" = cuerda / soga. "Me compré ropa nueva" = I bought new clothes.' },
+      { es: 'sopa', en: 'soup (NOT "soap")', tip: '"Soap" = jabón. "Quiero sopa de pollo" = I want chicken soup. Soap in the shower = jabón.' },
+      { es: 'asistir (a un evento)', en: 'to attend (an event) (NOT "to assist")', tip: '"To assist/help" = ayudar. "Asistí a la reunión" = I attended the meeting.' },
+      { es: 'atender', en: 'to serve / help / pay attention (NOT "to attend")', tip: '"To attend" = asistir a. "El mesero me atendió bien" = The waiter served me well.' },
+      { es: 'carrera', en: 'degree / major / race (NOT "career")', tip: '"Career" = trayectoria profesional. "¿Qué carrera estudias?" = What\'s your major?' },
+      { es: 'colegio', en: 'school / high school (NOT "college")', tip: '"College/university" = universidad. Colegio = K-12 school in Spanish.' },
+      { es: 'carpeta', en: 'folder (NOT "carpet")', tip: '"Carpet" = alfombra. "Pon los documentos en la carpeta" = Put the documents in the folder.' },
+      { es: 'noticia', en: 'news (NOT "notice")', tip: '"Notice/realize" = darse cuenta. "Las noticias" = the news. Una noticia = a piece of news.' },
+      { es: 'pretender', en: 'to intend / expect / try (NOT "to pretend")', tip: '"To pretend" = fingir. "Pretendo terminar hoy" = I intend to finish today.' },
+      { es: 'realizar', en: 'to carry out / perform / do (NOT "to realize")', tip: '"To realize" = darse cuenta de. "Realizó un gran proyecto" = He carried out a great project.' },
+      { es: 'recordar', en: 'to remember (NOT "to record")', tip: '"To record" = grabar. "¿Recuerdas mi nombre?" = Do you remember my name?' },
+      { es: 'resumir', en: 'to summarize (NOT "to resume")', tip: '"To resume" = reanudar. "Por favor, resume el texto" = Please summarize the text.' },
+    ]
+  },
   daily_tener: {
     label: 'Daily: Tener (Preterite vs Imperfect)',
     color: '#f97316',
